@@ -7,41 +7,63 @@ use Illuminate\Http\Request;
 class BudgetController extends Controller {
 
     public function __construct() {
-      //  $this->middleware('auth');
+        //  $this->middleware('auth');
     }
 
     public function index() {
-       return response()
-            ->json(array(
-            'token'=>csrf_token(),    
-            'page' => 1,
-            'per_page' => 3,
-            'total' => 12,
-            'total_pages' => 4,
-            'data' =>
-            array(
-                0 =>
-                array(
-                    'id' => 1,
-                    'first_name' => 'George',
-                    'last_name' => 'Bluth',
-                    'avatar' => 'https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg',
-                ),
-                1 =>
-                array(
-                    'id' => 2,
-                    'first_name' => 'Janet',
-                    'last_name' => 'Weaver',
-                    'avatar' => 'https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg',
-                ),
-                2 =>
-                array(
-                    'id' => 3,
-                    'first_name' => 'Emma',
-                    'last_name' => 'Wong',
-                    'avatar' => 'https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg',
-                ),
-            ),
+        return response()
+                        ->json(array(
+                            'token' => csrf_token(),
+                            'data' =>
+                            [
+                                0 =>
+                                [
+                                    'id' => 1,
+                                    'name' => 'Credit Card Payments',
+                                    'budgeted' => 10,
+                                    'activity' => 10,
+                                    'available' => 12,
+                                    'sub' => []
+                                ],
+                                1 =>
+                                [
+                                    'id' => 2,
+                                    'name' => 'True Expenses',
+                                    'budgeted' => 10,
+                                    'activity' => 10,
+                                    'available' => 12,
+                                    'sub' => [
+                                        0 => [
+                                            'id' => 3,
+                                            'name' => 'Auto Maintanence',
+                                            'budgeted' => 10,
+                                            'activity' => 10,
+                                            'available' => 12
+                                        ],
+                                        1 => [
+                                            'id' => 4,
+                                            'name' => 'Home Maintanence',
+                                            'budgeted' => 10,
+                                            'activity' => 10,
+                                            'available' => 12
+                                        ]
+                                    ]
+                                ],
+                                2 => ['id' => 5,
+                                    'name' => 'Debit Payments',
+                                    'budgeted' => 10,
+                                    'activity' => 10,
+                                    'available' => 12,
+                                    'sub' => [
+                                        0 => [
+                                            'id' => 6,
+                                            'name' => 'Auto Maintanence',
+                                            'budgeted' => 10,
+                                            'activity' => 10,
+                                            'available' => 12
+                                        ]
+                                    ]
+                                ]],
         ));
 //return view('home');
     }
